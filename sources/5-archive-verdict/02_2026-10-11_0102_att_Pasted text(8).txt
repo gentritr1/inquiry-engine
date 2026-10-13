@@ -1,0 +1,141 @@
+The finding, stated first: there is no universal discovery algorithm — the incomputability of induction guarantees that, and I will show why. But there is a universal discovery core, three components deep, that any bounded intelligence must implement: compress observations into models, use models to predict, and let reality veto. Around that core sits a small, portable layer of search heuristics — six of them, extracted below from breakthroughs in unrelated fields — that exist because exhaustive search through theory-space is impossible and something must guide the shortcuts. The honest claim for the resulting engine is not "it produces discoveries on demand." It is distributional: a researcher or research community running this process kills false theories faster, wastes less effort on elegant dead ends, and holds a better portfolio of anomalies — so discovery arrives sooner in expectation. That claim is itself falsifiable, and I'll say how.
+
+One preliminary observation that keeps this honest: the previous four turns of this conversation were, without naming it, an execution trace of the engine — three turns of generation and compression, one turn of adversarial reality-testing that killed several claims. This turn is the abstraction step. So the method described below is not being invented here; it is being read off a worked example, plus history.
+
+Phase I — What the Great Discoveries Actually Did
+Ten cases, chosen for maximal disciplinary spread, reduced to process:
+
+Darwin (natural selection). Prior observations: breeders' artificial selection, Malthusian population arithmetic, biogeographic gradients, fossil succession — all public, all decades old. Abandoned assumption: species as fixed essences (an assumption so constitutive it functioned as the definition of "species"). The unlock: transporting a known
+
+The finding, stated first: there is no universal discovery algorithm — the incomputability of induction guarantees that, and I will show why. But there is a universal discovery core, three components deep, that any bounded intelligence must implement: compress observations into models, use models to predict, and let reality veto. Around that core sits a small, portable layer of search heuristics — six of them, extracted below from breakthroughs in unrelated fields — that exist because exhaustive search through theory-space is impossible and something must guide the shortcuts. The honest claim for the resulting engine is not "it produces discoveries on demand." It is distributional: a researcher or research community running this process kills false theories faster, wastes less effort on elegant dead ends, and holds a better portfolio of anomalies — so discovery arrives sooner in expectation. That claim is itself falsifiable, and I'll say how.
+
+One preliminary observation that keeps this honest: the previous four turns of this conversation were, without naming it, an execution trace of the engine — three turns of generation and compression, one turn of adversarial reality-testing that killed several claims. This turn is the abstraction step. So the method described below is not being invented here; it is being read off a worked example, plus history.
+
+Phase I — What the Great Discoveries Actually Did
+Ten cases, chosen for maximal disciplinary spread, reduced to process:
+
+Darwin (natural selection). Prior observations: breeders' artificial selection, Malthusian population arithmetic, biogeographic gradients, fossil succession — all public, all decades old. Abandoned assumption: species as fixed essences (an assumption so constitutive it functioned as the definition of "species"). The unlock: transporting a knownmechanism — selection — from the human-directed frame to a designer-free frame (overproduction + variation + heredity does the selecting). Compression: the entire adaptive complexity of life onto one algorithm. Why others missed it: the essentialist category was invisible as an assumption; and everyone sought a purpose, so a mechanism with no purpose was literally unthinkable. Reasoning strategy: remove the agent from an existing mechanism.
+
+Einstein (special relativity). Prior: Maxwell's constant c, the null Michelson–Morley result, Lorentz's ad hoc contraction. Abandoned: absolute simultaneity — a background assumption no experiment had ever isolated because it was baked into the meaning of "at the same time." Unlock: treat a stubborn anomaly (constancy of c) not as a problem to explain away but as a postulate to build from. Compression: two postulates generate all of kinematics. Why missed: Lorentz had the equations and kept patching the old ontology; the barrier was conceptual courage, not mathematics. Strategy: promote the anomaly to an axiom.
+
+Wegener → plate tectonics. Prior: coastline fit, matching fossils and strata across oceans. Abandoned (eventually): fixed continents. Why delayed 50 years: Wegener had the pattern but no mechanism, so it was rightly rejected — a pattern without a generative mechanism is not yet a theory. Unlock came only with seafloor-spreading data (magnetic striping) supplying the mechanism. Lesson: pattern + mechanism is the minimum viable theory; either alone is inert.
+
+Shannon (information theory). Prior: telegraph/telephone engineering, no unified notion of "information." Abandoned: that meaning is intrinsic to communication. Unlock: redefine the object — information as reduction of uncertainty, deliberately discarding semantics, measured in bits. Compression: all communication under one quantity with hard limits (channel capacity). Why missed: conflating the message's meaning with its transmission; separating them required throwing away the part everyone thought was the point. Strategy: change what counts as the object of study.
+
+Semmelweis / germ theory. Prior: childbed-fever mortality far higher in the doctors' ward than the midwives' ward — a quantified anomaly sitting in plain sight. Unlock: a contrast (doctors came from autopsies; midwives didn't) plus an intervention (handwashing) that moved the outcome. Why rejected for decades: no mechanism (miasma theory occupied the explanatory slot) and it implicated the doctors themselves — incentive-blocked truth. Strategy: exploit a natural experiment; follow the contrast.
+
+Kepler → Newton. Kepler: abandoned the 2000-year circle assumption only because Brahe's data were precise enough that an 8-arcminute residual could not be dismissed. Newton: unified terrestrial and celestial motion by asking whether the same force governs both. Strategy: refuse to round away the residual; then unify two domains under one law.
+
+Turing (computation). Prior: Hilbert's decision problem, informal notion of "effective procedure." Unlock: model the human computer as a mechanism (tape, states, rules), turning a fuzzy intuition into a formal object, which then bounds itself (halting problem). Strategy: formalize the informal until it constrains itself.
+
+Keynes / market coordination and Hayek's counter. Two rival compressions of the same observations (depressions, prices). Instructive because both are partly right and the field never fully collapsed them — a reminder that social domains sustain multiple non-falsified theories longer, because experiments are non-repeatable and incentives contaminate evidence.
+
+McClintock (transposons) and Marshall (H. pylori / ulcers). Both: a lone observer with an anomaly the field's paradigm declared impossible ("genes don't move"; "bacteria can't live in stomach acid"), disbelieved for years, vindicated by a decisive demonstration (Marshall literally drank the culture — a self-experiment supplying the missing mechanism-to-outcome link). Strategy: an anomaly you can reproduce on demand beats a consensus you cannot.
+
+Cross-case extraction of the recurring moves (kept only where they appear in ≥3 unrelated cases):
+
+A long-available observation was already public — the scarce resource was never data, it was the reframing. (all cases)
+A constitutive assumption — one so basic it defined the vocabulary — was identified and dropped. (Darwin, Einstein, Shannon, tectonics)
+An anomaly was promoted from nuisance to centerpiece. (Einstein, Kepler, Semmelweis, Marshall)
+A mechanism was required before a pattern became a theory; pattern-only claims stalled. (tectonics, Wegener, Semmelweis, Marshall)
+Representation was changed — the object of study was redefined. (Shannon, Turing, Darwin)
+Incentives and identity blocked otherwise-available truths. (Semmelweis, Marshall, McClintock)
+Phase II — The Meta-Algorithm (smallest form)
+The irreducible core (this is not heuristic — it is forced; see Phase V):
+
+C-P-V loop: Compress observations into the shortest model that reproduces them → Predict something not yet observed → let reality Veto → update the model.
+
+That loop is correct but underdetermined: which compression, out of infinitely many, do you try? That is where search heuristics enter — not as truth but as priors over theory-space that make an intractable search tractable. The six that the Phase-I cases repeatedly reward:
+
+Hunt the residual. Go to where the current best model's error is largest and most stable. Anomalies are the gradient of discovery.
+Name the constitutive assumption. Ask: what would have to be true for this problem to even be stated this way? The highest-value assumptions are the ones embedded in the vocabulary. Test dropping each.
+Demand a mechanism. A pattern earns "theory" status only when paired with a generative process; hold pattern-only findings in quarantine.
+Change the representation. Re-ask what the object is. Redefining the unit (information as bits, species as populations) dissolves more problems than solving them within the old unit.
+Import across domains, then strip. Borrow a mechanism from a distant field, then remove the parts specific to its origin (selection minus the breeder; computation minus the human).
+Follow the contrast. Prefer natural experiments and reproducible-on-demand anomalies over accumulated correlational mass.
+The claim is not that running 1–6 yields a discovery. It is that theory-space is infinite and unsearchable, so every discoverer uses some prior to prune it; these six are the priors with the best historical hit-rate, and most thinkers deploy them ad hoc and inconsistently. The engine's value is making them explicit, routine, and auditable.
+
+Phase III — Testing by Rediscovery (and its honest limit)
+Applying 1–6 to problems with known answers:
+
+Natural selection: heuristic 5 (import selection, strip the agent) + 3 (mechanism) reconstructs it directly. ✓
+Special relativity: heuristic 1 (residual: constancy of c) + 2 (drop absolute simultaneity). ✓
+Information theory: heuristic 4 (redefine the object). ✓
+Plate tectonics: the engine correctly predicts the 50-year delay — heuristic 3 flags that Wegener's pattern lacked a mechanism, so the engine would have withheld theory-status exactly as the field did. This is the strongest result: the engine reproduces not just the discovery but its timing. ✓
+The limit I must state plainly: this is retrodiction. The engine points at where to look (residuals, constitutive assumptions, missing mechanisms) but does not generate the specific creative leap (that c should be a postulate, that information should shed meaning). Heuristics 1–6 narrow the search space by perhaps orders of magnitude; they do not collapse it to one. No process can, and Phase V proves why. So the engine passes the test in the only sense it can — it consistently identifies the conditions and locations of past breakthroughs — and fails the impossible test of manufacturing insight on command. Anyone claiming the latter is selling the elegant-falsehood this whole exercise warns against.
+
+Phase IV — Failure Modes and the Engine's Countermeasures
+Each failure mode paired with the specific engine mechanism that resists it:
+
+Failure mode	How it fools you	Engine countermeasure
+Confirmation bias	Seek supporting cases	Heuristic 1 forces attention to residuals, i.e. disconfirming instances, by construction
+Overfitting elegant narratives	Coherence feels like truth	The Compression Test (Phase IX): a theory must predict new facts, not just fit old ones
+Correlation → causation	Pattern mistaken for mechanism	Heuristic 3 quarantines pattern-only findings
+Indefinite extrapolation	Exponentials assumed eternal	Prediction horizons must be bounded and dated; extrapolations flagged as a distinct evidence class
+Ignoring incentives	Trust the interested reporter	Heuristic 6 + an explicit "who profits from this being believed?" check (the Semmelweis/Marshall lesson)
+Ignoring constraints/scale/thermo	Possibility mistaken for inevitability	A mandatory constraint pass: what physical/economic/political law bounds this?
+Ignoring feedback loops	Linear model of a reflexive system	Ask whether observers change the observed (acute in social domains)
+Premature formalization (added)	Rigor on the wrong object	Heuristic 4 forces re-examination of the object before modeling it
+Authority/paradigm capture (added)	The impossible-by-consensus filter	Reproducible-on-demand anomaly outranks consensus (McClintock rule)
+Motivated stopping (added)	Stop when the answer flatters you	The Veto step is non-optional and adversarial — you must actively search against your theory (as the reality-check turn of this very conversation did)
+Phase V — Is the Process Universal? (the load-bearing section)
+Separate three layers:
+
+Universal (forced on any bounded intelligence in any physics). The C-P-V core is not a human convention; it is a mathematical necessity. Compression is understanding — this is made precise by algorithmic information theory: the best model is the shortest program reproducing the data (Solomonoff/Kolmogorov). And here is the crucial result that settles the "universal algorithm" question: Solomonoff's ideal inductive method is the provably optimal predictor, and it is also provably incomputable. Therefore no realizable intelligence — human, AI, alien, or evolutionary — can run the perfect discovery algorithm. Every real intelligence must approximate it under finite compute. That single fact explains why heuristics exist at all: they are the compression of the incomputable into the affordable. Any intelligence facing an infinite hypothesis space and finite resources will converge on the same three necessities: compress, predict, test. This is as close to a universal law of discovery as exists, and it is a proven negative result dressed as a positive one.
+
+General but not human-specific. The six heuristics are strategies for approximating the incomputable ideal efficiently. An AI would use analogues (its inductive biases, active-learning acquisition functions, and adversarial self-play are literally heuristics 5, 1, and the Veto). Evolution "discovers" by the same C-P-V loop with variation as blind compression-search and differential survival as the Veto — no foresight, same skeleton. An alien civilization's heuristics might differ (they might weight representation-change differently), but they cannot escape compress-predict-test.
+
+Human-specific (and therefore the part to automate away). Insight-by-incubation, aesthetic guidance ("beauty"), status/incentive blindness, and small working memory are human implementation details — sometimes assets (aesthetics is a fast compression-prior), often bugs (the Semmelweis tragedy). A well-built engine's job is to supply prosthetics for the human-specific bugs (systematic anomaly logs for our poor memory, incentive-audits for our motivated reasoning) while preserving the human-specific assets (analogical range, taste as a prior).
+
+The deepest compression of this phase: discovery is bounded agents approximating incomputable induction, and every method in history is a different bet on how to spend finite search where it pays.
+
+Phase VI — The Discovery Engine (domain-general workflow)
+Input: any domain. The engine is a loop with a gate, not a pipeline.
+
+Inventory the observations, graded by evidence class (direct / strong inference / weak inference / unknown / contradicted — the ledger from the reality-check discipline). Never let classes borrow strength.
+Map the constitutive assumptions (heuristic 2): list what the domain's vocabulary presupposes. For each, ask what dies if it's false.
+Locate the residuals (heuristic 1): where is the reigning model's error largest, most stable, and most embarrassing?
+Attempt compressions (core + heuristics 4, 5): propose the shortest model reproducing the observations; try a representation change and a cross-domain import.
+Mechanism gate (heuristic 3): reject any candidate that is pattern-without-mechanism; send it back for a generative process or quarantine it.
+Constraint pass: bound the candidate by physical, economic, thermodynamic, and political limits (anti-inevitability check).
+Generate dated, falsifiable predictions with confidence calibrated to the weakest supporting dimension.
+Adversarial Veto: actively construct the observation that would kill the theory; search for it harder than for support (Phase VI of the reality-check turn — search against yourself).
+Theory comparison: field ≥3 rival explanations (economic/technological/institutional/etc.); keep whichever compresses more with fewer assumptions; note where each wins.
+Revise or promote, log the decision and the rejected alternatives (so the reasoning isn't rediscovered), and loop.
+The gate at step 5 and the adversarial step 8 are what most reasoning skips; they are where elegant falsehoods die.
+
+Phase VII — Attacking the Framework Itself
+"It only explains discoveries after the fact." Partly true and the most serious charge. Rebuttal with teeth: the plate-tectonics case shows the engine predicting a delay prospectively-in-structure (mechanism-gate would have withheld belief), and the framework issues dated falsifiable predictions (step 7), which is prospective by construction. But I concede it cannot pre-specify the creative content of the leap — see Phase III. Its prospective power is over where to look and what to withhold belief from, not what the answer is.
+
+"The heuristics are post-hoc — you selected cases that fit them." Real risk. Mitigation: the heuristics were required to appear in ≥3 unrelated fields, and the engine is stated to fail the impossible test (manufacturing insight), which a purely self-serving construction would have claimed to pass. Its willingness to bound its own power is evidence it isn't merely curve-fit to success stories.
+
+"Social/complex domains break it." Conceded and incorporated: reflexivity (observers move the observed), non-repeatable experiments, and incentive-contaminated evidence mean these domains sustain multiple non-falsified theories (Keynes/Hayek). The engine handles this not by forcing a winner but by demanding each theory carry its own falsifier and confidence — it degrades gracefully to "maintain a portfolio" rather than "select the truth."
+
+"Incomputability makes the whole thing vacuous." No — incomputability of the ideal is exactly what makes the heuristic layer valuable rather than optional. If perfect induction were computable, the engine would be pointless; because it isn't, the quality of one's approximation priors is the entire game.
+
+Surviving form after these attacks: the engine is a belief-discipline and search-allocation system, not an insight generator. That is a weaker and truer claim than any prior turn made about its own theories — which is the point of the exercise.
+
+Phase VIII — The Research Operating System (portable form)
+A one-screen protocol another AI or team can run verbatim:
+
+Workflow: Observe → Ledger (grade evidence) → Map assumptions → Find residuals → Compress → Mechanism gate → Constraint pass → Predict (dated) → Adversarial veto → Compare rivals → Revise. Loop.
+Evidence standard: every claim tagged A–E; no cross-horizon borrowing; extrapolations flagged as their own class.
+Confidence rule: score the weakest of {precedent, current evidence, mechanism, feasibility-physical, feasibility-economic, feasibility-political}; the theory's confidence cannot exceed its weakest leg.
+Prediction requirement: specific, observable, falsifiable, dated. A theory with no cheap near-dated prediction is not yet ready to be believed.
+Compression test (Phase IX): admit a principle only if it (a) explains more, (b) assumes less, (c) predicts better, (d) generates new tests, (e) has survived a real falsification attempt. Elegance alone is disqualifying, not qualifying.
+Reality check: search against the theory harder than for it; name what you've ignored; name who benefits from the belief.
+Revision loop: log rejected alternatives and the reason, so the search isn't repeated.
+This is deliberately the same discipline the reality-check turn imposed — generalized from "check this theory" to "run any inquiry."
+
+Phase IX — The Compression Test (applied to this document)
+Turning the test on the engine itself: Does "bounded agents approximating incomputable induction via compress-predict-test, guided by six pruning heuristics" explain more with less than conventional accounts of discovery ("genius," "the scientific method," "trial and error")? It subsumes the scientific method (a special case with formal experiments), trial-and-error (the Veto loop with weak priors), and evolution (C-P-V without foresight) under one skeleton — a genuine compression. It generates a new testable hypothesis: teams explicitly running the mechanism-gate and adversarial-veto steps should show measurably lower rates of retracted/overturned claims than matched teams that don't — checkable in the metascience literature and in preregistration-vs-not comparisons. It survived Phase VII's attacks by narrowing its own claim. It passes. A purely elegant theory would have claimed to generate insight; this one earns admission precisely by refusing to.
+
+Phase X — The Open Frontier (ranked by leverage on discovery itself)
+What is a good prior over theory-space? Since perfect induction is incomputable, everything rides on the quality of the pruning heuristics. We have no theory of which inductive biases are best for which domains. Solving this would improve every discovery in every field simultaneously — highest leverage bar none. Connects: algorithmic information theory, machine learning, cognitive science. Movable today: measure hit-rates of specific heuristics across a large corpus of historical discoveries and across AI architectures.
+Can the creative-leap step be mechanized, or is it irreducibly search-luck? The gap between "know where to look" and "see the answer." If it's mechanizable, discovery accelerates by orders of magnitude; if not, human+AI complementarity is permanent. Connects: AI, neuroscience, philosophy of science. Movable today: test whether LLMs proposing representation-changes (heuristic 4) beat human baselines on held-out historical problems.
+How do we discover in reflexive/incentive-contaminated domains where the Veto is weak (economics, politics, medicine-on-humans)? Connects: statistics (causal inference), mechanism design, metascience. Movable today: expand natural-experiment and preregistration infrastructure.
+What is the correct exploration/exploitation allocation for a research field? How much effort on anomalies vs. consolidation? A portfolio problem we solve by folklore. Connects: economics, RL, science funding. Movable today: study funding-portfolio outcomes.
+Can incentive-blindness be engineered out of institutions the way the engine engineers it out of an individual's reasoning? The Semmelweis failure was institutional, not cognitive. Connects: sociology, mechanism design, governance.
+Number 1 is the deepest: it is the question the incomputability result creates, and every other item is partly downstream of it.
+
+Closing. The honest answer to the prompt's final fork — does a universal discovery process exist? — is yes at the core, no at the algorithm. Compress, predict, let reality veto: universal and forced, because it is the only way a finite mind can approximate an infinite, incomputable ideal. But the step that turns searching into finding — the specific reframing — cannot be reduced to a procedure, and a proven negative result (the incomputability of optimal induction) tells us it never will be. The Discovery Engine's real deliverable is therefore not a machine that thinks; it is a discipline that stops thinkers from fooling themselves and points their limited search where breakthroughs have historically hidden — in the residuals, the constitutive assumptions, and the missing mechanisms. Its best evidence is that when applied to itself it got smaller and more modest, not grander — which, by its own compression test, is the signature of a theory converging on something real rather than on something merely beautiful.

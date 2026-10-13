@@ -1,0 +1,5 @@
+# Raw export from ChatGPT: account metadata and the full tool log. Keep local unless reviewed.
+raw/
+.DS_Store
+site/dist/
+__pycache__/

@@ -1,0 +1,105 @@
+The previous turns produced an increasingly elegant theory. This turn's job is to find out how much of it is true. Since my training data ends in January 2026 and it is now July 2026 — and the theory's most load-bearing claims are about fast-moving evidence — I'll first pull current data on the five claims where reality could already contradict me, then build the ledger.
+
+
+Browsed the web, used a tool
+The searches gave me what I needed — including two places where reality moved against the theory since my training data ends, and one where it moved in favor. Here is the reality-constrained audit.
+
+Verdict first. After checking the theory against July 2026 reality: the capability foundation is stronger than assumed (no plateau; the long-task trend accelerated), the trust-is-the-bottleneck claim — which my own earlier critique expected to fail — is partially rehabilitated by enterprise survey data, and the direction of agent-commerce infrastructure is confirmed but its volume is roughly four orders of magnitude below "economy." Three claims are contradicted by current evidence and are downgraded: near-term firm dissolution, near-term labor-share decline, and the regulatory documentation-mandate tailwind (the EU just delayed it two years). The grand theory survives as a directional map with unproven timing, and today's world is still better explained by two boring rivals — the diffusion curve and the capex cycle — than by any transformation thesis. What distinguishes my theory from those rivals is now condensed into a small set of falsifiable predictions below.
+
+Phase I — Evidence Ledger
+Every major claim from the three prior documents, classified:
+
+#	Claim	Grade	Basis
+1	Cognition cost falls rapidly; long-task capability grows exponentially, no plateau	A	METR: 50%-success time horizon doubling every ~7 months since 2019, accelerating to ~4 months in 2024–25; expanded 2026 task suite shows no plateau evidence
+2	Demographic inversion (fertility collapse, workforce shrinkage)	A	Standard demography; the one non-AI pillar, essentially certain
+3	Entry-level cognitive-labor compression	A/B	~13% relative employment decline for workers 22–25 in AI-exposed occupations; firms with high AI exposure slowing junior hiring specifically
+4	Aggregate labor displacement / labor-share decline	E (so far)	No detectable aggregate unemployment effect since 2022; exposed-worker unemployment flat. The strong version of the labor claim is currently contradicted
+5	Trust/governance — not capability — gates enterprise agent deployment	B	Surveys rank governance, security, compliance, and unclear ROI above model limitations; 79% adopted agents somewhere, only ~11% in production; ~88% of pilots die on governance/data/observability. Upgraded — my own Phase-II critique predicted this claim would fail, and it did not
+6	…specifically, that third-party bonds/insurance unblock deployment	D	AI liability market "in its infancy" after 8 years of aiSure; MGAs exist (Armilla, AIUC, Mosaic/Munich Re) but capacity is cautious and no premium volume figures are even published — absence of demand evidence
+7	Agent-to-agent commerce infrastructure gets built	B	Mastercard launched Agent Pay for Machines (June 2026); Visa Intelligent Commerce live; first agentic transaction on Mastercard's network Q4 2025
+8	…and reaches economic volume soon	C/D	x402 protocol: 165M transactions but only ~$50M cumulative (~30¢ each). Direction real, volume trivial — protocols are running years ahead of traffic
+9	Card networks are the natural owners of the payments slice	B	They are visibly building exactly this, confirming the "sharpest hidden competitor" prediction
+10	Regulation creates a documentation/conformity mandate soon	E (near term)	Digital Omnibus agreed May 2026, formally adopted June 2026: high-risk obligations delayed to Dec 2027 / Aug 2028. The regulatory tailwind was predicted and reality moved the other way
+11	Records stop self-evidencing (provenance crisis)	A (phenomenon) / C (institutional response)	Synthetic-media harms real enough that the EU added a new prohibition effective Dec 2026; but no provenance utility is emerging yet
+12	Coase inversion: firms dissolve into task networks	E (near term) / D (long term)	Corporate concentration is rising, not falling; large firms adopt AI fastest; high integration costs (the 88% failure rate) currently strengthen big-firm advantage
+13	Knowing-free/committing-scarce asymmetry	C	Conceptually consistent with the slow insurance market and fast analysis commoditization, but not yet directly testable
+14	Crisis-precedes-institution sequence for the binding layer	C	Strong historical pattern; unobserved here so far
+15	Robotics lags cognition ~a decade; care robotics forced by demographics	C/D	Inference from cost curves and demography; thin current deployment evidence
+16	Post-labor distribution institutions (compute dividends etc.)	D	Pure speculation, correctly labeled as such
+Phase II — Time Horizons (claims may not borrow support across rows)
+Observable today: #1, 2, 3, 5, 7, 9, 11-phenomenon.
+Emerging ≤3 years: agentic-checkout consumer volume; first authority-abuse litigation; AI-liability MGA consolidation or death; EU high-risk regime actually biting (Dec 2027).
+Likely ≤10 years: agent-identity/KYA rules in finance; machine-payment volume becoming a reported metric; care-robotics scaling in East Asia.
+Possible ≤25 years: actor-mix inversion; machine-speed arbitration at volume; Coase inversion, if ever.
+Pure speculation: distribution institutions; legitimacy interfaces as professions; anything about 2040+.
+The prior documents' main sin was letting 10-year claims (agent economy) borrow urgency from today's claims (capability curve). Severed here.
+
+Phase III — What Is Actually Happening (July 2026)
+Capability is the outlier: the METR time-horizon trend not only held but accelerated, and the 2026 task-suite expansion tightened rather than weakened it. Everything institutional is slower than the theory implied: enterprises have near-universal agent pilots and ~11% production; the binding constraint practitioners name is governance, data-readiness, and unverifiable ROI — capability ranks below all of them. Gartner forecasts >40% of agentic projects canceled by 2027. Payments incumbents built agent rails ahead of demand; measurable agent-commerce volume is a rounding error. The AI insurance market has real carriers and real MGAs and essentially no book. The EU delayed its high-risk regime by 16–24 months under competitiveness pressure. Labor effects are real but surgically narrow: young workers in exposed occupations, ~13% relative decline, invisible in aggregates. In one sentence: the intelligence is arriving on schedule; the economy's absorption machinery is not — and the gap between those two clocks is currently the single most load-bearing fact in view.
+
+Phase IV — Historical Comparisons
+Electrification (1890–1930). Predicted: instant factory transformation. Actual: ~40 years, because gains required rebuilding factories around unit drive, not bolting motors onto steam layouts. Today's 88% pilot-failure rate is the exact signature of the bolt-on phase. Survives: diffusion takes decades; kills: any "5-year transformation" reading of my theory.
+Railway manias (1840s) and the corporate form. Predicted: railways change everything (true) and every railway share is gold (false). Actual: capital bubble, crash, then the missing institutions — modern accounting and audit — emerged from the wreckage. Survives: crisis-precedes-institution and "directionally right, financially brutal."
+Dot-com (1995–2005). Predictions of e-commerce dominance were correct and early; 2000-01 wiped out the messengers; overbuilt fiber powered the real adoption a decade later. Survives: infrastructure overbuild (today's datacenters, agent rails) tends to be used eventually — by later entrants.
+ATMs and spreadsheets (1970s–90s). Predicted: tellers and accounting clerks eliminated. Actual: teller jobs grew for decades as branches multiplied; clerks fell but accountants rose — task automation restructured occupations rather than deleting employment. This analogy is currently winning: it predicts exactly the observed pattern (composition shift, aggregate stability). It must be respected until aggregate data breaks it.
+Containerization (1956–1980). A pure coordination-cost collapse: ~20 years, a standards war resolved by ISO, ferocious incumbent resistance, and value accruing to consolidated network operators — not to the standard's author. Survives: standards commoditize, networks capture; maps directly onto card networks and the delegation stack.
+Cyber insurance (1997–present). A genuinely new risk class that, 25+ years on, is still small relative to the exposure and periodically blows up its underwriters. Kills: any near-term "AI insurance is a large market" claim; grade #6 stays D.
+Phase V — Competing Theories
+Two-scarcities theory (mine): institutions are compressions of scarce cognition and costly trust; abundance of the first re-forms everything around the second. Predicts governance/trust as the persistent barrier, institutions forming at the machine/human-speed boundary. Better on: why the barrier is governance rather than capability (confirmed); where incumbents are building (confirmed). Worse on: timing — it keeps implying faster institutional change than observed.
+Capex-cycle theory: this is the railway mania; the main story is capital allocation, overbuild, and correction; institutions barely move. Better on: datacenter economics, trivial agent volume, pilot failure. Worse on: the capability curve and youth labor data, which it treats as noise.
+Normal-technology diffusion theory: AI is electricity — decades of complementary reorganization, no discontinuity. Better on: nearly everything observable today (11% production, EU delay, aggregate labor stability). Worse on: a 4-month capability doubling has no precedent in electricity; diffusion theory has no mechanism for the tool improving 10× while diffusing.
+Power-concentration theory: the story is who controls compute and rails; institutions will be built by and for incumbents. Better on: card networks pre-building agent rails; big-firm advantage. Worse on: predicting which functions emerge — it says who wins but not what gets built.
+Demographic-stagnation theory: aging dominates everything; AI is a partial offset; the future is Japan everywhere. Better on: the only A-grade long-range data we have. Worse on: all near-term dynamics.
+Behavioral theory: humans insist on human accountability regardless of machine competence; adoption stalls at the trust frontier permanently. Better on: the governance barrier. Notably, this is less a rival than the psychological mechanism inside my Law 2.
+Honest comparison: today's world is best explained by (3)+(2) — a normal diffusion curve wrapped in a capital mania. My theory earns its keep only if the governance barrier turns out to be structural (requiring new institutions) rather than a maturity phase (solved by better tooling). That single question separates the theories, and Phase X gives the cheap test for it.
+
+Phase VI — Disconfirming Evidence, Found and Applied
+Searched against myself; what turned up: aggregate labor stability (downgrades fast-labor claims to E), EU delay (kills near-term regulatory tailwind), rising firm concentration (kills near-term Coase inversion — the causality actually runs backward for now: cheap cognition advantages the large firm that can absorb integration costs), x402's ~$50M cumulative volume (an agent "economy" 4–5 orders of magnitude below rhetoric), and the absence of any published AI-insurance premium figures (silence as evidence of weak demand). Am I extrapolating exponentials? Yes, exactly one — the METR curve — and it is the best-measured trend in the entire domain; I extrapolate it 3 years, not 20, and log it as the keystone risk. Am I mistaking possibility for economic inevitability? The prior documents did, in the agent-commerce timing; corrected via claim #8.
+
+Phase VII — Market Reality
+If the binding layer (identity, authority, recourse for machine actors) is the great missing infrastructure, why doesn't it exist? Because there is no traffic. ~$50M of cumulative machine-payment volume cannot pay for a toll booth; infrastructure that prices risk needs loss experience, and loss experience needs volume. What prevents it today is not ignorance — Visa, Mastercard, Stripe/x402, Munich Re, and a half-dozen MGAs are all visibly positioned — it is that the market is pre-revenue as a category. Why haven't incumbents captured it? In payments, they are capturing it right now, exactly as the Phase-II critique predicted; the open territory is non-payment actions (procurement, filings, account operations), where no incumbent owns the acceptance moment. What changes first: agent transaction volume crossing from demo to disclosure — the quarter a card network starts reporting agentic transaction counts is the starting gun. Confidence in the opportunity's eventual existence: moderate; in anyone's ability to time it from here: low.
+
+Phase VIII — Predictions (specific, falsifiable, dated)
+By July 2027:
+
+METR 50%-success time horizon ≥2× its January 2026 value. Falsified if <1.5× — which would also gut Law 1 and most of this edifice.
+Agent-initiated purchases remain <0.5% of U.S. e-commerce transactions despite the 2026 holiday push. (I am betting against Visa's "millions of consumers" framing translating to share.)
+Global standalone AI-liability premium still <$1B; at least one of the current MGAs dead or absorbed.
+At least one U.S. or EU lawsuit where an autonomous agent exceeding delegated authority is the central fact, covered in mainstream press.
+By mid-2029:
+5. Agent-initiated payments ≥1% of e-commerce transactions on at least one major network (falsified if <0.1% — which would push the whole agent-economy timeline out a decade and vindicate the capex-cycle theory).
+6. A G20 financial regulator formally proposes agent-identity/know-your-agent requirements.
+7. Relative employment decline for 22–25-year-olds in AI-exposed occupations exceeds 20% vs. 2022 baseline, while aggregate U.S. unemployment stays <6% — composition shift without aggregate collapse.
+8. Governance/trust still ranks above capability in enterprise adoption surveys (if capability retakes the top spot, the diffusion theory wins and mine loses its distinctive claim).
+
+By mid-2031:
+9. U.S. aggregate labor share within 2.5 points of its 2025 value (a prediction against the strong version of my own theory).
+10. Machine-to-machine payment volume >$10B/year on major rails, or claim #8 drops to E.
+11. EU high-risk conformity regime in force and supporting a >€1B assessment industry, or the regulation-as-tailwind claim is retired permanently.
+
+By 2036:
+12. Statutory registration of autonomous agents (binding agent → accountable principal) exists in at least one G7 financial system.
+13. Agent-transaction volume is a standard line item in card-network earnings and BIS statistics.
+
+Phase IX — Confidence Calibration
+Conclusion	Confidence
+Capability trend continues ≥3 more years	80%
+Demographic inversion as stated	95%
+Governance/trust remains the top adoption barrier through 2028	70%
+Card networks own the agent-payments slice	70%
+Binding-layer institutions mandatory in finance within 10 years	55%
+Two-scarcities theory as the best 25-year axis	50%
+Aggregate labor share falls >3 pts by 2031	20%
+Firm dissolution (Coase inversion) within 15 years	15%
+Post-labor distribution institutions within 20 years	unrated — speculation
+Each figure discounts for its weakest dimension per the rules: e.g., binding-layer institutions score high on incentives and precedent but weak on current political momentum (the EU just moved the other way), hence 55% rather than the 75% the prior document implied.
+
+Phase X — Residual Unknowns, Ranked
+Does long-horizon reliability reach deployment grade? METR's 50%-success metric is a research trend, not an economic one; commerce needs ~99.9% at day-long tasks. This is the single unknown that matters most — every other claim is downstream. Cheapest observation: METR's 80%-success horizon series plus Gartner's actual (not forecast) 2027 cancellation rate. Free, published, 12–18 months.
+Is the governance barrier a maturity phase or a structural gap? This is the discriminating test between my theory and normal-diffusion. Cheapest experiment: track the barrier rankings in the same enterprise surveys annually — if governance objections decline as observability tooling matures, diffusion theory wins; if they persist and migrate toward liability, insurance, and third-party accountability, the two-scarcities theory wins. Cost: zero; the surveys already exist.
+Will institutions allow agents across trust boundaries at all, or does agent activity stay intra-firm (which would kill the acceptance-network opportunity while preserving the rest)? Cheapest: card-network agentic volume disclosures over the next four quarters.
+The political response function to visible youth labor compression — the least predictable and most consequential branch point for the 2030s.
+The energy price floor of cognition — whether datacenter constraints put a durable floor under intelligence prices.
+Closing statement of epistemic position. The prior documents were coherent; this audit finds them roughly half-grounded. What survives with direct evidence: the capability curve, the demographic floor, entry-level labor compression, trust-as-the-binding-constraint, and incumbent rail-building. What is contradicted today: fast institutional change, near-term labor-share decline, firm dissolution, and regulatory tailwinds. What remains genuinely unknown is exactly what should be: the 10–25-year claims. The theory earns the right to that horizon only by surviving the dated predictions above — and prediction #8, the cheapest and nearest, is the one that decides whether the whole two-scarcities frame is a discovery or just an elegant restatement of a diffusion curve.
+
+Sources: METR time horizons, METR Time Horizon 1.1, AI Digest — time horizons, Mastercard Agent Pay for Machines, Digital Commerce 360 — Visa/Mastercard agentic commerce, Visa Intelligent Commerce, Eco — agentic commerce 2026 guide, Munich Re aiSure, The Insurer — standalone AI liability market, Risk & Insurance — AI risk underwriting, NACE — AI and the early-career labor market, NY Fed Liberty Street — job postings and AI, Gibson Dunn — EU AI Act omnibus agreement, Consilium — AI Act simplification, Covington — EU AI Act update, Writer — enterprise AI adoption 2026, Joget — AI agent adoption analyst data
