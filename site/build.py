@@ -19,7 +19,7 @@ PHASES = {
     "4-daily-practice": ("Daily practice", "10 Jul", "p4"),
     "5-archive-verdict": ("Verdict", "11 Oct", "p5"),
 }
-PAGES = [("index.html", "Overview"), ("ideas.html", "Ideas"), ("prompts.html", "Prompts"), ("lessons.html", "Lessons"),
+PAGES = [("index.html", "Overview"), ("index.html#log", "Prediction log"), ("ideas.html", "Ideas"), ("prompts.html", "Prompts"), ("lessons.html", "Lessons"),
          ("apply.html", "Apply to Snaxx"), ("mission.html", "Mission"), ("tests.html", "Tests")]
 
 CSS = """
@@ -122,6 +122,31 @@ td.num{font-variant-numeric:tabular-nums;text-align:center;font:600 15px var(--f
 .toc{display:flex;flex-wrap:wrap;gap:8px}
 .toc a{font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:5px 9px;text-decoration:none}
 section[id]{scroll-margin-top:70px}
+[hidden]{display:none!important}
+.logsec{display:grid;gap:14px}
+.form{display:grid;gap:12px}
+.form label{display:grid;gap:4px;font:600 12.5px var(--f-body);color:var(--ink-2)}
+.form input[type=text],.form textarea,.form select,.form input[type=date],.res textarea,.res select{font:15px var(--f-body);background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:8px 10px;width:100%;min-width:0}
+.form textarea,.res textarea{min-height:64px;resize:vertical}
+.frow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:640px){.frow{grid-template-columns:1fr}}
+.conf{display:flex;align-items:center;gap:10px}
+.conf input{flex:1;accent-color:var(--accent)}
+.conf output{font:600 18px var(--f-mono);min-width:3.2em;text-align:right}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08);background:var(--accent)}
+.btn.danger{color:var(--bad)}
+.pitem{border-top:1px solid var(--line);padding-block:12px;display:grid;gap:6px}
+.pitem:first-child{border-top:0;padding-top:0}
+.pitem .q{font-weight:600}
+.pitem .a{font:400 15.5px/1.5 var(--f-display)}
+.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;color:var(--muted)}
+.chip.right{color:var(--good);border-color:var(--good)} .chip.wrong{color:var(--bad);border-color:var(--bad)} .chip.partly{color:var(--warn);border-color:var(--warn)} .chip.late{color:var(--bad);border-color:var(--bad)}
+.res{display:grid;gap:8px;background:var(--sunk);border-radius:8px;padding:10px;margin-top:4px}
+.empty{padding:16px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;font-size:14px}
+svg.cal{width:100%;max-width:420px;height:auto;display:block}
+svg.cal text{fill:var(--muted);font:11px var(--f-mono)}
+.stat{font:600 22px var(--f-mono)}
 """
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap">'
 COPY_JS = r"""document.querySelectorAll("button[data-copy]").forEach(b=>b.addEventListener("click",()=>{const pre=document.getElementById(b.dataset.copy);const t=pre.textContent;const ok=()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1500)};const sel=()=>{const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected, press Copy"};if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok,sel);else sel()}));"""
@@ -152,6 +177,147 @@ def reg(r):
 def pending(what):
     return f'<div class="card"><p class="muted">{E(what)} is being written. Republish after the application pass finishes.</p></div>'
 
+# ---------- prediction log (lives on index.html; uses the db + user capabilities) ----------
+TEST_OPTS = "".join(f'<option value="{E(t["id"])}">{E(t["id"])} · {E(t["idea"][:60])}</option>' for t in (AP["tests"] if AP else []))
+LOG_HTML = f"""
+<section id="log" class="logsec">
+  <div><h2>Prediction log</h2><p class="lede" style="font-size:15.5px;margin-top:6px">The piece the method was missing. Write your answer and how sure you are <b>before</b> you ask AI, run a test or look it up. Come back and record what happened. Over time the chart shows whether your confidence matches reality.</p></div>
+  <p id="log-status" class="note" role="status">Loading the shared log…</p>
+  <form id="pform" class="card form" hidden>
+    <label for="pq">Question: what will happen, or what is true?<input type="text" id="pq" maxlength="300" required placeholder="e.g. Will the RN upgrade audit email get 3 paid audits from 50 emails?"></label>
+    <label for="pa">My prediction, written now<textarea id="pa" maxlength="800" required placeholder="What I expect, in one or two sentences."></textarea></label>
+    <label for="pc">How sure am I?<span class="conf"><input type="range" id="pc" min="50" max="99" step="1" value="70" aria-describedby="pcv"><output id="pcv">70%</output></span></label>
+    <div class="frow">
+      <label for="pt">Linked test<select id="pt"><option value="">None</option>{TEST_OPTS}</select></label>
+      <label for="parea">Area<select id="parea"><option>startup</option><option>method</option><option>AI</option><option>mission</option><option>code review</option><option>personal</option></select></label>
+      <label for="pd">Resolve by<input type="date" id="pd"></label>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="btn primary" type="submit" id="psave">Save prediction</button><span class="note">A saved prediction cannot be edited. That is the point.</span></div>
+    <p id="perr" class="note" style="color:var(--bad)" role="alert"></p>
+  </form>
+  <div class="grid2">
+    <div class="card"><h3>Calibration</h3><p class="note">Each dot is a confidence band. On the diagonal, your “80% sure” comes true 80% of the time. Labels show how many predictions each dot rests on; small counts are noise.</p><svg class="cal" id="cal" viewBox="0 0 420 300" role="img" aria-label="Calibration chart"></svg>
+      <div style="display:flex;gap:24px;flex-wrap:wrap"><div><span class="tag">Resolved</span><div class="stat" id="s-n">0</div></div><div><span class="tag">Brier score</span><div class="stat" id="s-brier">–</div></div><div><span class="tag">Over-confidence</span><div class="stat" id="s-over">–</div></div></div>
+      <p class="note">Brier score: 0 is perfect, 0.25 is a coin flip at 50%. Over-confidence: average confidence minus how often you were right.</p>
+      <div class="tbl"><table><thead><tr><th>Band</th><th>Predictions</th><th>Came true</th></tr></thead><tbody id="caltab"></tbody></table></div></div>
+    <div class="card"><h3>Open <span class="muted" id="c-open"></span></h3><div id="open"><div class="empty">No open predictions yet.</div></div></div>
+  </div>
+  <div class="card"><h3>Resolved <span class="muted" id="c-done"></span></h3><div id="done"><div class="empty">Nothing resolved yet. Resolved predictions and their lessons appear here.</div></div></div>
+</section>"""
+
+LOG_JS = r"""
+(() => {
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const status = t => { $("#log-status").textContent = t; };
+const pc = $("#pc"), pcv = $("#pcv"); pc.addEventListener("input", () => pcv.textContent = pc.value + "%");
+const d0 = new Date(); d0.setDate(d0.getDate() + 14); $("#pd").value = d0.toISOString().slice(0, 10);
+const BANDS = [[50,59],[60,69],[70,79],[80,89],[90,99]];
+const SCORE = {right: 1, partly: 0.5, wrong: 0};
+let db = null, user = null, me = null, isOwner = false, readOnly = false, rows = [];
+
+function drawCal(res) {
+  const W = 420, H = 300, L = 44, R = 12, T = 12, B = 36;
+  const x = c => L + (c - 50) / 50 * (W - L - R), y = r => T + (1 - r) * (H - T - B);
+  let s = "";
+  for (const v of [0, .25, .5, .75, 1]) s += `<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end">${v*100}%</text>`;
+  for (const c of [50, 60, 70, 80, 90, 100]) s += `<text x="${x(c)}" y="${H-B+18}" text-anchor="middle">${c}%</text>`;
+  s += `<text x="${(L+W-R)/2}" y="${H-4}" text-anchor="middle">how sure you were</text>`;
+  s += `<line x1="${x(50)}" y1="${y(.5)}" x2="${x(100)}" y2="${y(1)}" stroke="var(--muted)" stroke-dasharray="4 4" stroke-width="1.5"/>`;
+  let tab = "";
+  for (const [a, b] of BANDS) {
+    const inb = res.filter(r => r.confidence >= a && r.confidence <= b);
+    const n = inb.length, hit = n ? inb.reduce((t, r) => t + SCORE[r.outcome.verdict], 0) / n : null;
+    tab += `<tr><td>${a}–${b}%</td><td>${n}</td><td>${hit === null ? "–" : Math.round(hit * 100) + "%"}</td></tr>`;
+    if (n) {
+      const cx = x((a + b) / 2), cy = y(hit), rr = Math.min(16, 5 + Math.sqrt(n) * 2.2);
+      s += `<g><title>${a}–${b}% sure: ${n} predictions, ${Math.round(hit*100)}% came true</title><circle cx="${cx}" cy="${cy}" r="${rr}" fill="var(--accent)" fill-opacity=".85" stroke="var(--surface)" stroke-width="2"/><text x="${cx}" y="${cy - rr - 4}" text-anchor="middle">n=${n}</text></g>`;
+    }
+  }
+  if (!res.length) s += `<text x="${(L+W-R)/2}" y="${(T+H-B)/2}" text-anchor="middle">Resolve a prediction to see the first dot</text>`;
+  $("#cal").innerHTML = s; $("#caltab").innerHTML = tab;
+  $("#s-n").textContent = res.length;
+  if (res.length) {
+    const brier = res.reduce((t, r) => t + Math.pow(r.confidence / 100 - SCORE[r.outcome.verdict], 2), 0) / res.length;
+    const over = res.reduce((t, r) => t + r.confidence / 100 - SCORE[r.outcome.verdict], 0) / res.length;
+    $("#s-brier").textContent = brier.toFixed(2);
+    $("#s-over").textContent = (over >= 0 ? "+" : "") + Math.round(over * 100) + " pts";
+  } else { $("#s-brier").textContent = "–"; $("#s-over").textContent = "–"; }
+}
+
+async function render() {
+  const ids = [...new Set(rows.flatMap(r => [r.author, r.outcome && r.outcome.resolvedBy]).filter(Boolean))];
+  const ps = user && ids.length ? await user.profiles(ids) : {};
+  const who = id => id ? ((ps[id] && ps[id].name) || "Someone") : "Someone";
+  const today = new Date().toISOString().slice(0, 10);
+  const open = rows.filter(r => r.status !== "resolved"), done = rows.filter(r => r.status === "resolved" && r.outcome && r.outcome.verdict in SCORE);
+  $("#c-open").textContent = open.length ? "(" + open.length + ")" : ""; $("#c-done").textContent = done.length ? "(" + done.length + ")" : "";
+  const meta = r => `<div class="meta"><span>${esc(who(r.author))}</span><span>· ${esc((r.createdAt || "").slice(0, 10))}</span><span class="chip">${esc(r.confidence)}% sure</span>${r.test ? `<span class="chip">${esc(r.test)}</span>` : ""}<span class="chip">${esc(r.area || "")}</span>${r.status !== "resolved" && r.resolveBy ? `<span class="chip${r.resolveBy < today ? " late" : ""}">${r.resolveBy < today ? "overdue · " : "by "}${esc(r.resolveBy)}</span>` : ""}</div>`;
+  const canDel = r => !readOnly && (isOwner || (me && r.author === me));
+  $("#open").innerHTML = open.length ? open.map(r => `<div class="pitem" data-id="${esc(r.id)}">${meta(r)}<div class="q">${esc(r.question)}</div><div class="a">${esc(r.answer)}</div>
+    ${readOnly ? "" : `<details><summary class="btn">Record what happened</summary><div class="res"><label class="note" for="h-${esc(r.id)}">What actually happened</label><textarea id="h-${esc(r.id)}" maxlength="800"></textarea>
+    <label class="note" for="v-${esc(r.id)}">Was the prediction right?</label><select id="v-${esc(r.id)}"><option value="right">Right</option><option value="partly">Partly</option><option value="wrong">Wrong</option></select>
+    <label class="note" for="l-${esc(r.id)}">Lesson (optional)</label><textarea id="l-${esc(r.id)}" maxlength="600"></textarea>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" data-act="resolve" data-id="${esc(r.id)}">Save outcome</button>${canDel(r) ? `<button class="btn danger" data-act="del" data-id="${esc(r.id)}">Delete</button>` : ""}</div></div></details>`}</div>`).join("")
+    : `<div class="empty">No open predictions. Write one above before your next test, review or AI question.</div>`;
+  $("#done").innerHTML = done.length ? done.map(r => `<div class="pitem">${meta(r)}<div class="q">${esc(r.question)}</div><div class="a">${esc(r.answer)}</div>
+    <div class="meta"><span class="chip ${esc(r.outcome.verdict)}">${esc(r.outcome.verdict)}</span><span>recorded by ${esc(who(r.outcome.resolvedBy))} · ${esc((r.outcome.resolvedAt || "").slice(0, 10))}</span></div>
+    <p><b>What happened.</b> ${esc(r.outcome.happened)}</p>${r.outcome.lesson ? `<p class="ink2"><b>Lesson.</b> ${esc(r.outcome.lesson)}</p>` : ""}</div>`).join("")
+    : `<div class="empty">Nothing resolved yet. Resolved predictions and their lessons appear here.</div>`;
+  drawCal(done);
+}
+
+function fail(e, where) {
+  const code = e && e.code;
+  if (code === "invalid_argument" && where === "write") { readOnly = true; $("#pform").hidden = true; status("You can read this log but not write to it. Ask the owner for Contributor access."); render(); return; }
+  if (code === "quota_exceeded") { status("The log is full. Delete old predictions to add new ones."); return; }
+  status("Could not reach the shared log right now. Reload the page to try again.");
+}
+
+$("#pform").addEventListener("submit", async ev => {
+  ev.preventDefault(); if (!db || readOnly) return;
+  const q = $("#pq").value.trim(), a = $("#pa").value.trim();
+  if (!q || !a) { $("#perr").textContent = "Write both the question and your prediction."; return; }
+  $("#perr").textContent = ""; const btn = $("#psave"); btn.disabled = true; btn.textContent = "Saving…";
+  try {
+    await db.collection("predictions").add({question: q, answer: a, confidence: +pc.value, test: $("#pt").value, area: $("#parea").value,
+      resolveBy: $("#pd").value || "", createdAt: new Date().toISOString(), author: me, status: "open"});
+    $("#pq").value = ""; $("#pa").value = ""; status("Saved. It is locked now. Come back to record what happened.");
+  } catch (e) { fail(e, "write"); }
+  btn.disabled = false; btn.textContent = "Save prediction";
+});
+
+document.addEventListener("click", async ev => {
+  const b = ev.target.closest("button[data-act]"); if (!b || !db) return;
+  const id = b.dataset.id;
+  if (b.dataset.act === "resolve") {
+    const happened = document.getElementById("h-" + id).value.trim();
+    if (!happened) { document.getElementById("h-" + id).focus(); return; }
+    b.disabled = true; b.textContent = "Saving…";
+    try { await db.collection("predictions").doc(id).update({status: "resolved", outcome: {happened, verdict: document.getElementById("v-" + id).value, lesson: document.getElementById("l-" + id).value.trim(), resolvedAt: new Date().toISOString(), resolvedBy: me}}); status("Outcome saved."); }
+    catch (e) { fail(e, "write"); b.disabled = false; b.textContent = "Save outcome"; }
+  } else if (b.dataset.act === "del") {
+    if (b.dataset.armed !== "1") { b.dataset.armed = "1"; b.textContent = "Click again to delete"; setTimeout(() => { if (b.isConnected) { b.dataset.armed = ""; b.textContent = "Delete"; } }, 4000); return; }
+    try { await db.collection("predictions").doc(id).delete(); status("Deleted."); } catch (e) { fail(e, "write"); }
+  }
+});
+
+(async () => {
+  const c = window.claude;
+  if (!c || !c.use) { status("Open this page on claude.ai to use the shared prediction log."); render(); return; }
+  db = await c.use("db");
+  if (!db) { status("The shared log is not available in this view. Sign in on claude.ai to read and write it."); render(); return; }
+  user = await c.use("user");
+  if (user) { me = await user.id(); isOwner = await user.isOwner(); const w = await user.can("data.write"); if (w === false) readOnly = true; }
+  $("#pform").hidden = readOnly;
+  status(readOnly ? "You can read this log. Writing needs Contributor access." : "");
+  db.collection("predictions").orderBy("createdAt", "desc").onSnapshot(snap => {
+    rows = snap.docs.map(d => Object.assign({id: d.id}, d.data())); render();
+  }, e => fail(e, "read"));
+})();
+})();
+"""
+
 # ---------- index ----------
 V = X["verdict"]
 arc = "".join(f'''<li style="border-top-color:var(--{PHASES[a["phase"]][2]})"><span class="n">{i} · {E(PHASES[a["phase"]][1])}</span><h3>{E(PHASES[a["phase"]][0])}</h3>
@@ -176,12 +342,13 @@ body = f"""
  <div class="vbox bad"><span class="tag">Not proven</span><b>No real use yet</b><p class="ink2" style="font-size:14px">102 days of material, and the prediction, calibration and failure logs are still empty templates. By the book's own rule, it is decoration until it is used on a problem with an unknown answer.</p></div>
 </div>
 <div class="best"><span class="tag">The single best idea</span><p>{E(V["single_best_idea"])}</p></div>
+{LOG_HTML}
 <div><h2>How the thinking moved</h2><p class="note" style="margin-top:6px">Five phases, in order. Each colour marks a phase on every page.</p></div>
 <ol class="timeline">{arc}</ol>
 <details class="card"><summary class="btn">Read Fable's full verdict</summary><p style="margin-top:10px">{E(V["is_it_profound"])}</p><p><b>What is new.</b> {E(V["what_is_new"])}</p></details>
 <div><h2>Pages</h2></div><div class="pagecards">{cards}</div>
 <p class="note">Source files live in the repo folder inquiry-engine/sources/, by phase. This site holds no secrets; the thread had none.</p>"""
-page("index.html", "Inquiry Engine", body, first=True)
+page("index.html", "Inquiry Engine", body, LOG_JS, first=True)
 
 # ---------- ideas ----------
 ideas = "".join(f'''<article class="card idea"><div style="display:flex;gap:6px;flex-wrap:wrap">{phase_tag(phase_of(c["source"]))}<span class="chip">{E(c["kind"])}</span></div>
