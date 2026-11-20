@@ -3,3 +3,5 @@ raw/
 .DS_Store
 site/dist/
 __pycache__/
+# Launch video renders: large binaries, regenerable.
+brag-output/
